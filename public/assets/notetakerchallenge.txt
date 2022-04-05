@@ -112,3 +112,9 @@ const birds = require('./birds')
 app.use('/birds', birds)
 
 The app will now be able to handle requests to /birds and /birds/about, as well as call the timeLog middleware function that is specific to the route.
+
+Challenge requirement: You'll need to find a way to give each note a unique id when it's saved (look into npm packages that could do this for you).
+
+  Unique ids are created by Cryptographically-strong random values that’s why it is very secure. It has support for cross-platform like Node, React Native, Chrome, Safari, Firefox, etc.
+
+https://www.npmjs.com/package/uuid

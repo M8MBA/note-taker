@@ -11,9 +11,9 @@
   "dependencies": {
     "express": "^4.16.4",
     "inquirer": "^8.2.2",
-    "jest": "^27.5.1"
+    "jest": "^27.5.1",
+    "uuid": "^8.3.2"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/M8MBA/note-taker.git"
