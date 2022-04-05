@@ -1,0 +1,114 @@
+const fs = require('fs');
+
+  requiring the Node.js file system module.
+
+  Common use for file system module:
+    - Read files
+    - Create files
+    - Update files
+    - Delete files
+    - Rename files
+
+https://www.w3schools.com/nodejs/nodejs_filesystem.asp
+
+Express is a Node.js server framework. Express will allow you to quickly and easily establish API routes and associated HTTP request methods. Routing is how you design the server to handle responses when a client makes a request at a specific endpoint, or URL.
+
+Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. It is considered the de facto standard server framework for Node.js.
+https://www.npmjs.com/package/express
+
+Insomnia is a powerful REST API client that allows us to test APIs and make client-side server requests without having to use a browser.
+https://insomnia.rest/
+
+Heroku is a cloud application platform that enables developers to build, run, and operate applications entirely in the cloud. Unlike GitHub pages, which only allows you to deploy static sites with HTML pages, Heroku allows you to deploy a server.js file that will run the Node.js process. You’ll also use the Heroku CLI, which will help you deploy apps easily without leaving the command line.
+Heroku: https://id.heroku.com/login
+Heroku CLI: https://devcenter.heroku.com/articles/heroku-cli
+
+server.js - main file that my server will run from.
+
+set up the server so that it's listening for incoming requests.
+installing Express.js by running the following commands:
+  # You can use the `-y` flag to skip the package questionnaire and leave default answers
+  npm init -y
+  # You can use `npm i` as a shortcut for `npm install`
+  npm i express
+
+Just like any other npm package, we will require Express.js at the top of the file. Add the following code to the top of server.js:
+
+const express = require('express');
+
+Like other npm packages, Express.js has documentation to help you get started. At the time of writing, the Express.js v4 documentation (Links to an external site.) was the most stable and widely used, so that's what we'll use throughout this module.
+
+Setting up the server only takes two steps: we need to instantiate the server, then tell it to listen for requests. To instantiate the server, add the following code to server.js:
+
+const app = express();
+
+That's all it takes to start Express.js! We assign express() to the app variable so that we can later chain on methods to the Express.js server. Now we just need to use one method to make our server listen. We're going to chain the listen() method onto our server to do it. To do that, add the following code to the end of server.js:
+
+app.listen(3001, () => {
+  console.log(`API server now on port 3001!`);
+});
+
+run 'npm start' to get the server on port
+run ctrl+c to stop the server.
+
+what's a port?
+Imagine that a website is like a college campus. A website has an address, referred to as the host. A college campus also has an address. The host tells the client where to go, but it doesn't specify exactly where to go. Likewise, if you have the address for a college campus, you don't know exactly which building or classroom to go to. The port is like a building/classroom; it gives the exact desination on the host. 
+
+If you're browsing the internet, chances are you're visiting the address on one of two ports: 80 or 443. 80 is typically used for sites that begin with http://, and 443 is used for sites that begin with https://.
+The truth is, there's nothing wrong with running your server on 80 or 443. However, ports with numbers 1024 and under are considered special by the operating system, and often require special permissions (like running the process as an administrator). To avoid these permission restrictions, we chose to run on a port that is less restricted. In this instance, we chose 3001, but there are plenty of other ports to choose from. In fact, port numbers can range from 1024 to 49151! We chose a number around 3000 because it is common practice and fairly easy to remember.
+
+https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+
+creating a route that the front-end can request data from.
+const { animals } = require('./data/animals');
+
+To add the route, type the following code just before app.listen():
+
+app.get('/api/animals', (req, res) => {
+  res.send('Hello!');
+});
+
+There are two important takeaways from this code:
+
+    The first is that the get() method requires two arguments. The first is a string that describes the route the client will have to fetch from. The second is a callback function that will execute every time that route is accessed with a GET request.
+
+    The second takeaway is that we are using the send() method from the res parameter (short for response) to send the string Hello! to our client.
+
+Express Documentation: https://expressjs.com/en/api.html#express
+
+The send() method is great if we want to send short messages, but what if we want to send lots of JSON, like we've seen from APIs? To send JSON, just change send to json. We do this to change the headers (i.e., additional metadata that's sent with every request/response) so that the client knows it's receiving JSON.
+
+express.Router
+
+Use the express.Router class to create modular, mountable route handlers. A Router instance is a complete middleware and routing system; for this reason, it is often referred to as a “mini-app”.
+
+The following example creates a router as a module, loads a middleware function in it, defines some routes, and mounts the router module on a path in the main app.
+
+const express = require('express')
+const router = express.Router()
+
+// middleware that is specific to this router
+router.use((req, res, next) => {
+  console.log('Time: ', Date.now())
+  next()
+})
+// define the home page route
+router.get('/', (req, res) => {
+  res.send('Birds home page')
+})
+// define the about route
+router.get('/about', (req, res) => {
+  res.send('About birds')
+})
+
+module.exports = router
+
+Then, load the router module in the app:
+
+const birds = require('./birds')
+
+// ...
+
+app.use('/birds', birds)
+
+The app will now be able to handle requests to /birds and /birds/about, as well as call the timeLog middleware function that is specific to the route.
