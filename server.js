@@ -4,10 +4,11 @@ const path = require('path');
 const uuid = require('uuid');
 const apiRoutes = require('./routes/api/notes');
 const htmlRoutes = require('./routes/html/htmlRoutes');
+const PORT = process.env.PORT || 3001;
 // instantiate the server, then tell it to listen for requests
 const app = express();
 
-const PORT = process.env.PORT || 3001;
+
 
 app.use(express.static('public'));
 // parse incoming string or array data
