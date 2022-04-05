@@ -11,6 +11,12 @@ const fs = require('fs');
 
 https://www.w3schools.com/nodejs/nodejs_filesystem.asp
 
+The fs.readFile() method is an inbuilt method which is used to read the file. This method read the entire file into buffer. To load the fs module we use require() method. For example: var fs = require(‘fs’);
+
+  Syntax:
+
+    fs.readFile( filename, encoding, callback_function )
+
 Express is a Node.js server framework. Express will allow you to quickly and easily establish API routes and associated HTTP request methods. Routing is how you design the server to handle responses when a client makes a request at a specific endpoint, or URL.
 
 Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. It is considered the de facto standard server framework for Node.js.
@@ -22,6 +28,16 @@ https://insomnia.rest/
 Heroku is a cloud application platform that enables developers to build, run, and operate applications entirely in the cloud. Unlike GitHub pages, which only allows you to deploy static sites with HTML pages, Heroku allows you to deploy a server.js file that will run the Node.js process. You’ll also use the Heroku CLI, which will help you deploy apps easily without leaving the command line.
 Heroku: https://id.heroku.com/login
 Heroku CLI: https://devcenter.heroku.com/articles/heroku-cli
+
+To get started, create a Heroku account at Heroku.com. Then download the Heroku CLI. The CLI will help us easily get our app deployed, and we won't even need to leave the command line!
+
+    heroku create <app-name>
+
+You can specify the name of your application by adding <app-name> after heroku create, but it must be a unique name that isn't used anywhere else on Heroku. If this is your first time using the CLI, you'll be prompted to log in with your Heroku account.
+
+Just as with GitHub Pages, the deployment steps rely on a Git branch. Rather than pushing to origin main though, we will push to heroku main, as this is a new location for our repository's code to go.
+
+To create a new Heroku application, enter the following command into the terminal:
 
 server.js - main file that my server will run from.
 
@@ -118,3 +134,12 @@ Challenge requirement: You'll need to find a way to give each note a unique id w
   Unique ids are created by Cryptographically-strong random values that’s why it is very secure. It has support for cross-platform like Node, React Native, Chrome, Safari, Firefox, etc.
 
 https://www.npmjs.com/package/uuid
+
+Delete Note:
+  req.params property
+
+  The req.params property is an object containing properties mapped to the named route “parameters”. For example, if you have the route /student/:id, then the “id” property is available as req.params.id. This object defaults to {}.
+
+Strict inequality (!==)
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_inequality
