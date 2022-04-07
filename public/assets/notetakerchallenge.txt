@@ -1,4 +1,4 @@
-https://morning-shelf-37352.herokuapp.com/notes or
+https://morning-shelf-37352.herokuapp.com or
 http://localhost:3001/notes
 
 const fs = require('fs');
