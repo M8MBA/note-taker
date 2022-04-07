@@ -5,6 +5,10 @@
   ## Description
   ### An application called Note Taker that can be used to write and save notes.
 
+  <img width="1435" alt="Screen Shot 2022-04-06 at 9 10 14 PM" src="https://user-images.githubusercontent.com/97080366/162113484-0146694c-b195-4e3c-9d90-d9e114d5583a.png">
+  
+  <img width="1420" alt="Screen Shot 2022-04-06 at 9 12 42 PM" src="https://user-images.githubusercontent.com/97080366/162113488-c8ec6cc8-2b7a-4d43-9d65-ffb6782f60a0.png">
+
   ## Table of Contents:
   ###  * [Usage](#usage)
   ###  * [License](#license)
